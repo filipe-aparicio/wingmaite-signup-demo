@@ -1,15 +1,88 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
-
-@theme inline {
+@theme {
+  --font-sans: var(--font-roobert);
+  --font-serif: var(--font-reckless);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-minsk-50: #f0effe;
+  --color-minsk-100: #e2e1fe;
+  --color-minsk-200: #cbc9fc;
+  --color-minsk-300: #afa8f9;
+  --color-minsk-400: #9886f3;
+  --color-minsk-500: #8768ec;
+  --color-minsk-600: #794cdf;
+  --color-minsk-700: #6b3ec4;
+  --color-minsk-800: #57349f;
+  --color-minsk-900: #4a3280;
+  --color-minsk-950: #2b1d49;
+
+  --color-azure-50: #edf6ff;
+  --color-azure-100: #daebff;
+  --color-azure-200: #bcdcff;
+  --color-azure-300: #8ec7ff;
+  --color-azure-400: #59a7ff;
+  --color-azure-500: #3a88fe;
+  --color-azure-600: #1d64f3;
+  --color-azure-700: #144ee0;
+  --color-azure-800: #1840b5;
+  --color-azure-900: #193a8f;
+  --color-azure-950: #142557;
+
+  --color-moss-50: #f3f9ec;
+  --color-moss-100: #e3f1d6;
+  --color-moss-200: #bddfa0;
+  --color-moss-300: #a7d383;
+  --color-moss-400: #87c05b;
+  --color-moss-500: #69a43d;
+  --color-moss-600: #4f822e;
+  --color-moss-700: #3f6427;
+  --color-moss-800: #355024;
+  --color-moss-900: #2e4522;
+  --color-moss-950: #15250e;
+
+  --color-scarlet-50: #fff4ec;
+  --color-scarlet-100: #ffe6d3;
+  --color-scarlet-200: #ffc8a5;
+  --color-scarlet-300: #ffa26d;
+  --color-scarlet-400: #fe6f32;
+  --color-scarlet-500: #ff4809;
+  --color-scarlet-600: #ff2c01;
+  --color-scarlet-700: #cc1b02;
+  --color-scarlet-800: #a1170b;
+  --color-scarlet-900: #82160b;
+  --color-scarlet-950: #460704;
+
+  --color-saffron-50: #fffbe8;
+  --color-saffron-100: #fdf6c4;
+  --color-saffron-200: #fdeb8b;
+  --color-saffron-300: #fbd849;
+  --color-saffron-400: #f9c931;
+  --color-saffron-500: #e7a909;
+  --color-saffron-600: #c88205;
+  --color-saffron-700: #9f5d08;
+  --color-saffron-800: #84490f;
+  --color-saffron-900: #703c14;
+  --color-saffron-950: #411e07;
+
+  --color-pine-10: #f9f9f9;
+  --color-pine-50: #f4f3f2;
+  --color-pine-70: #ebe9e6;
+  --color-pine-100: #e3e1dd;
+  --color-pine-200: #cac5be;
+  --color-pine-300: #aca398;
+  --color-pine-400: #94887b;
+  --color-pine-500: #85786d;
+  --color-pine-600: #71655d;
+  --color-pine-700: #60544f;
+  --color-pine-800: #504643;
+  --color-pine-900: #463e3c;
+  --color-pine-950: #272221;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +93,13 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply text-pine-950 font-sans relative;
+}
+
+.root {
+  isolation: isolate;
+}
+
+button {
+  @apply cursor-pointer;
 }
