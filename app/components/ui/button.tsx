@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 type CommonProps = {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'success' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'faded' | 'success' | 'ghost';
   fullWidth?: boolean;
   className?: string;
 };
@@ -41,6 +41,7 @@ function getClasses({
     fullWidth ? 'w-full' : 'w-fit',
     variant === 'primary' && 'bg-pine-950 text-pine-50 border-pine-950',
     variant === 'secondary' && 'bg-pine-10 text-pine-900 border-pine-200',
+    variant === 'faded' && 'bg-pine-100 text-pine-900 border-pine-100',
     variant === 'success' && 'bg-moss-200 text-moss-900 border-moss-200',
     variant === 'ghost' &&
       'bg-transparent text-pine-950 border-pine-70  hover:border-pine-200',

@@ -1,14 +1,12 @@
-import { default as NextLink } from 'next/link';
-import { HTMLAttributeAnchorTarget } from 'react';
+import NextLink from 'next/link';
+import type { ComponentProps } from 'react';
+import { cn } from '@/lib/utils';
 
-type Props = {
-  href: string;
-  children: React.ReactNode;
-  target?: HTMLAttributeAnchorTarget | undefined;
-};
-function Link({ href, children, target }: Props) {
+export type LinkProps = ComponentProps<typeof NextLink>;
+
+function Link({ className, children, ...props }: LinkProps) {
   return (
-    <NextLink href={href} target={target} className="text-pine-950 underline">
+    <NextLink {...props} className={cn('text-pine-950 underline', className)}>
       {children}
     </NextLink>
   );

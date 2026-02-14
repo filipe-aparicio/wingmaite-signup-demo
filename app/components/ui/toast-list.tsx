@@ -1,7 +1,7 @@
 'use client';
 
 import { Toast } from '@base-ui/react/toast';
-import { AlertCircle, Wand2 } from 'lucide-react';
+import { AlertCircle, MailCheck, Wand2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Progress from '@/app/components/ui/progress';
 
@@ -26,6 +26,7 @@ function ToastList() {
               <div className="flex items-center justify-center gap-2.5">
                 {toast.type === 'working' && <Wand2 size={16} />}
                 {toast.type === 'alert' && <AlertCircle size={16} />}
+                {toast.type === 'email' && <MailCheck size={16} />}
                 <Toast.Title className="leading-tight mb-0.5" />
               </div>
               <Progress value={100} timeout={toast.timeout} />

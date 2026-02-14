@@ -3,7 +3,6 @@ import SignupStepShell from '@/app/components/signup/signup-step-shell';
 import Button from '@/app/components/ui/button';
 import Link from '@/app/components/ui/link';
 import Separator from '@/app/components/ui/separator';
-import { cn } from '@/lib/utils';
 import { Mail } from 'lucide-react';
 
 export default function Page() {
@@ -17,7 +16,7 @@ export default function Page() {
           variant="ghost"
           fullWidth
           className="font-normal"
-          href="/signup/profile"
+          href="/signup/confirm"
         >
           <GoogleLogo />
           Continue with Google
@@ -28,7 +27,7 @@ export default function Page() {
           variant="ghost"
           fullWidth
           className="font-normal"
-          href="/signup/profile"
+          href="/signup/confirm"
         >
           <Mail size={16} /> Continue with email
         </Button>

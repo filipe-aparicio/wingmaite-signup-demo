@@ -1,6 +1,6 @@
 type Props = {
   title: string;
-  description: string;
+  description: React.ReactNode;
   children: React.ReactNode;
 };
 function SignupStepShell({ title, description, children }: Props) {
