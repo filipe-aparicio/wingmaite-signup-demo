@@ -51,16 +51,9 @@ function getClasses({
 
 function Button(props: Props) {
   if ('href' in props && props.href !== undefined) {
-    const {
-      children,
-      variant,
-      fullWidth,
-      size,
-      className,
-      href,
-      ...linkProps
-    } = props;
-    const classes = getClasses({ variant, fullWidth, size, className });
+    const { children, variant, fullWidth, className, href, ...linkProps } =
+      props;
+    const classes = getClasses({ variant, fullWidth, className });
 
     return (
       <Link href={href} className={classes} {...linkProps}>
@@ -69,9 +62,8 @@ function Button(props: Props) {
     );
   }
 
-  const { children, variant, fullWidth, size, className, ...buttonProps } =
-    props;
-  const classes = getClasses({ variant, fullWidth, size, className });
+  const { children, variant, fullWidth, className, ...buttonProps } = props;
+  const classes = getClasses({ variant, fullWidth, className });
 
   return (
     <ButtonBaseUI className={classes} {...buttonProps}>
