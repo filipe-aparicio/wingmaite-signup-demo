@@ -39,7 +39,7 @@ function getClasses({
     'flex items-center justify-center gap-5 rounded-xl px-5 py-2.5 font-medium border cursor-pointer',
     'px-5 py-2.5 gap-2',
     fullWidth ? 'w-full' : 'w-fit',
-    variant === 'primary' && 'bg-pine-900 text-white border-pine-900',
+    variant === 'primary' && 'bg-pine-950 text-pine-50 border-pine-950',
     variant === 'secondary' && 'bg-pine-10 text-pine-900 border-pine-200',
     variant === 'success' && 'bg-moss-200 text-moss-900 border-moss-200',
     variant === 'ghost' &&
