@@ -2,6 +2,8 @@ import GoogleLogo from '@/app/components/signup/google-logo';
 import SignupStepShell from '@/app/components/signup/signup-step-shell';
 import Button from '@/app/components/ui/button';
 import Link from '@/app/components/ui/link';
+import Separator from '@/app/components/ui/separator';
+import { cn } from '@/lib/utils';
 import { Mail } from 'lucide-react';
 
 export default function Page() {
@@ -21,7 +23,7 @@ export default function Page() {
           Continue with Google
         </Button>
 
-        <div className="w-full text-center">or</div>
+        <Separator label="or" />
         <Button
           variant="ghost"
           fullWidth
