@@ -5,8 +5,6 @@ type Props = {
 function Logo({ color = '#FFF4EC', className }: Props) {
   return (
     <svg
-      width="274"
-      height="40"
       viewBox="0 0 274 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

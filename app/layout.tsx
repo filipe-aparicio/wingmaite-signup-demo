@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import ToastProvider from '@/app/components/providers/toast-provider';
 
 const reckless = localFont({
   src: '../public/fonts/reckless-uprights-variable.woff2',
@@ -26,7 +27,9 @@ export default function RootLayout({
       lang="en"
       className={`${roobert.variable} ${reckless.variable} antialiased`}
     >
-      <body className="root">{children}</body>
+      <body className="root">
+        <ToastProvider>{children}</ToastProvider>
+      </body>
     </html>
   );
 }

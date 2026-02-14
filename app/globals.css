@@ -103,3 +103,7 @@ body {
 button {
   @apply cursor-pointer;
 }
+
+*:focus {
+  @apply outline-none ring-0;
+}

@@ -266,7 +266,10 @@ function createMeshEngine(
     canvas.id = canvasId;
 
     gl.viewport(0, 0, internalW, internalH);
-    initPoints(state.cssWidth, state.cssHeight);
+    const targetCount = Math.min(state.colors.length, MAX_POINTS);
+    if (pts.length !== targetCount) {
+      initPoints(state.cssWidth, state.cssHeight);
+    }
   }
 
   function updateProps(props: {
@@ -460,6 +463,7 @@ export default function StarlingFlow({
   const [shouldRender, setShouldRender] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [size, setSize] = useState<{ w: number; h: number } | null>(null);
+  const engineRef = useRef<ReturnType<typeof createMeshEngine> | null>(null);
 
   const propsRef = useRef({
     colors,
@@ -534,6 +538,11 @@ export default function StarlingFlow({
 
   const canvasWidth = width ?? size?.w ?? BASE_S;
   const canvasHeight = height ?? size?.h ?? BASE_S;
+  const sizeRef = useRef({ w: canvasWidth, h: canvasHeight });
+
+  useEffect(() => {
+    sizeRef.current = { w: canvasWidth, h: canvasHeight };
+  }, [canvasWidth, canvasHeight]);
 
   // WebGL setup + loop + pause/resume
   useEffect(() => {
@@ -547,15 +556,17 @@ export default function StarlingFlow({
       (canvas.getContext('experimental-webgl') as WebGLRenderingContext | null);
     if (!gl) return;
 
+    const initial = propsRef.current;
     let engine = createMeshEngine(gl, canvas, canvasId, {
-      colors,
-      speed,
-      waveSpeed,
-      softNoiseSpeed,
-      softness,
+      colors: initial.colors,
+      speed: initial.speed,
+      waveSpeed: initial.waveSpeed,
+      softNoiseSpeed: initial.softNoiseSpeed,
+      softness: initial.softness,
     });
+    engineRef.current = engine;
 
-    engine.resize(canvasWidth, canvasHeight);
+    engine.resize(sizeRef.current.w, sizeRef.current.h);
     engine.updateProps(propsRef.current);
 
     let frameId = 0;
@@ -620,10 +631,19 @@ export default function StarlingFlow({
       visObs.disconnect();
       document.removeEventListener('visibilitychange', handleVisibility);
       engine.dispose();
+      engineRef.current = null;
       // @ts-expect-error allow GC
       engine = null;
     };
-  }, [shouldRender, reducedMotion, canvasWidth, canvasHeight, canvasId]);
+  }, [shouldRender, reducedMotion, canvasId]);
+
+  // Keep the same engine instance during resize to avoid animation freezes/flashes.
+  useEffect(() => {
+    if (!shouldRender || reducedMotion) return;
+    const engine = engineRef.current;
+    if (!engine) return;
+    engine.resize(canvasWidth, canvasHeight);
+  }, [canvasWidth, canvasHeight, shouldRender, reducedMotion]);
 
   return (
     <div ref={hostRef} className={cn('h-full w-full', className)}>

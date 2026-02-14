@@ -15,7 +15,7 @@ export default function Page() {
           variant="ghost"
           fullWidth
           className="font-normal"
-          href="/signup/user-details"
+          href="/signup/profile"
         >
           <GoogleLogo />
           Continue with Google
@@ -26,7 +26,7 @@ export default function Page() {
           variant="ghost"
           fullWidth
           className="font-normal"
-          href="/signup/user-details"
+          href="/signup/profile"
         >
           <Mail size={16} /> Continue with email
         </Button>
