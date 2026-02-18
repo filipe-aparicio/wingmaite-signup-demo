@@ -15,7 +15,7 @@ function ChatLink({ title, active, onClick }: Props) {
         active ? "bg-white hover:bg-white" : "hover:bg-white/50",
       )}
     >
-      <p className="w-full truncate text-sm">{title}</p>
+      <p className="w-full truncate">{title}</p>
       <Ellipsis size={16} className="hidden group-hover:block" />
     </div>
   );
