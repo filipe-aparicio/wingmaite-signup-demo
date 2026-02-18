@@ -1,26 +1,26 @@
-import { Checkbox as CheckboxBaseUI } from '@base-ui/react';
-import { cn } from '@/lib/utils';
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { Checkbox as CheckboxBaseUI } from "@base-ui/react";
+import { cn } from "@/lib/utils";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type Props = Omit<
   ComponentPropsWithoutRef<typeof CheckboxBaseUI.Root>,
-  'children'
+  "children"
 > & {
   label: ReactNode;
   className?: string;
 };
 
-function Checkbox({ label, className, ...rootProps }: Props) {
+function Checkbox({ label, className, ...props }: Props) {
   return (
-    <label className="flex items-center gap-2.5 text-sm text-pine-950 cursor-pointer group">
+    <label className="text-pine-950 group flex cursor-pointer items-center gap-2.5 text-sm">
       <CheckboxBaseUI.Root
         className={cn(
-          'border border-pine-70 w-6 h-6 rounded-md flex items-center justify-center focus:border-pine-200 group-hover:border-pine-200 transition-colors shrink-0',
+          "border-pine-70 focus:border-pine-200 group-hover:border-pine-200 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors",
           className,
         )}
-        {...rootProps}
+        {...props}
       >
-        <CheckboxBaseUI.Indicator className="bg-pine-950 transition-all data-starting-style:w-0 data-starting-style:h-0 w-3 h-3 data-ending-style:w-0 data-ending-style:h-0 block rounded-full"></CheckboxBaseUI.Indicator>
+        <CheckboxBaseUI.Indicator className="bg-pine-950 block h-3 w-3 rounded-full transition-all data-ending-style:h-0 data-ending-style:w-0 data-starting-style:h-0 data-starting-style:w-0"></CheckboxBaseUI.Indicator>
       </CheckboxBaseUI.Root>
       {label}
     </label>
