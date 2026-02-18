@@ -51,12 +51,13 @@ function NavLeft({ data }: Props) {
         {data && isOpen && (
           <div
             id="nav-left--bottom"
-            className="flex max-h-full w-full min-w-0 flex-col gap-3.5 overflow-auto"
+            className="flex max-h-full w-full min-w-0 flex-col gap-0.5 overflow-auto"
           >
             {data.map((chat) => (
               <ChatLink
                 key={chat.id}
                 title={chat.title}
+                active={chat.id === activeChat}
                 onClick={() => handleChatClick(chat.id)}
               />
             ))}
